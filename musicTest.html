@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <style>
+    .top{
+    float: right;
+    height:50px;
+    width:504px;
+    }
+    #btn{
+      float: right;
+      font-size:18px;
+      width:100px;
+      height:34px;
+    }
+    #search{
+      float: right;
+      font-size:18px;
+      height:30px;
+      width:400px;
+    }
+    #ul{
+    width:600px;
+    overflow:hidden;
+    margin-left: 5%;
+    margin-top:50px;
+    margin-bottom:50px;
+    }
+    li{
+      float: left;
+      width:20%;
+    }
+    img{
+      width:100%;
+      height: 100%;
+    }
+    #lyric{
+      float: right;
+      position: fixed;
+      top:100px;
+      right:20px;
+      width:500px;
+      height:200px;
+      border:1px gray solid;
+      font-size:18px;
+      /* background:gray; */
+    }
+    #lyric li{
+      width:100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <audio autobuffer autoplay loop controls id="audio"></audio>
+  <div class="top">
+    <input type="text" id="search" value="童话"><input type="submit" id="btn" value="搜索">
+  </div>
+  <ul id="ul">
+      <li>
+      <img src="images/yoga.jpg" alt="">
+      <p><a href="#" title="">林宥嘉</a></p>
+      </li>
+      <li>
+      <img src="images/yoga.jpg" alt="">
+      <p><a href="#" title="">林宥嘉</a></p>
+      </li>
+      <li>
+      <img src="images/yoga.jpg" alt="">
+      <p><a href="#" title="">林宥嘉</a></p>
+      </li>
+      <li>
+      <img src="images/yoga.jpg" alt="">
+      <p><a href="#" title="">林宥嘉</a></p>
+      </li>
+      <li>
+      <img src="images/yoga.jpg" alt="">
+      <p><a href="#" title="">林宥嘉</a></p>
+      </li>
+  </ul>
+  <div id="lyric">
+    <input type="button" id="talk" value="评论">
+  </div>
+</body>
+</html>
+<script src='js/ajax.js'></script>
+<script>
+  window.onload=function(){
+    var oSearch = document.getElementById('search');
+    var oBtn = document.getElementById('btn');
+    var oul = document.getElementById('ul');
+    var aud = document.getElementById('audio');
+    var lyric = document.getElementById('lyric');
+    var talk = document.getElementById('talk');
+
+    oBtn.onclick=function(){
+      ajax({
+        type:'get',
+        url:'https://api.imjad.cn/cloudmusic/?type=search&s='+oSearch.value,
+        async:true,
+        success:function(data){
+          oul.innerHTML = '';
+          for(var i = 0 ;i<data.result.songs.length;i++){
+            var ali = document.createElement('li');
+            var omg = document.createElement('img');
+            omg.setAttribute('src',data.result.songs[i].al.picUrl);
+            omg.setAttribute('song_id',data.result.songs[i].id);
+            ali.appendChild(omg);
+            oul.appendChild(ali);
+          }
+        }
+      })
+    }
+    oul.onclick=function(e){
+      var eve = e||event;
+      var target = eve.srcElement || eve.target;
+
+      if(target.nodeName.toLowerCase() == 'img'){
+        ajax({
+          type:'get',
+          url:'https://api.imjad.cn/cloudmusic/?type=song&id='+target.getAttribute('song_id')+'&br:128000',
+          async:true,
+          success:function(data){
+            aud.setAttribute('src',data.data[0].url)
+          }
+        })
+      }
+    }
+    lyric.onclick=function(e){
+      var eve = e||event;
+      var target = eve.srcElement || eve.target;
+
+      if(target.nodeName.toLowerCase() == 'button'){
+        var otalk = document.createElement('img')
+        ajax({
+          type:'get',
+          url:'https://api.imjad.cn/cloudmusic/?type=comments&id='+target.getAttribute('talk_id')+'&br:128000',
+          async:true,
+          success:function(data){
+            console.log(data.hotComments[0].user.avatarUrl);
+            otalk.style.width='100%';
+            otalk.style.height='100px';
+            otalk.style.marginTop='50px';
+            otalk.setAttribute('src',data.hotComments[0].user.avatarUrl)
+            // otalk.src = target.getAttribute('src')
+            lyric.appendChild(otalk);
+          }
+        })
+      }
+    }
+  }
+</script>

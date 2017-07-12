@@ -1,0 +1,143 @@
+/*
+* @Author: Marte
+* @Date:   2017-07-04 17:55:26
+* @Last Modified by:   Marte
+* @Last Modified time: 2017-07-10 17:16:58
+*/
+*{
+  padding: 0;
+  margin: 0;
+}
+body,html{
+  width:100%;
+}
+li{
+  list-style: none;
+}
+.top{
+  // padding-left: 30%;
+  float: right;
+  height:50px;
+  width:504px;
+
+}
+#foot{
+  position: fixed;
+  bottom:0;
+  left: 0;
+  width:100%;
+  height:52px;
+  background:#bbc;
+  #show{
+    width:130px;
+    margin-top:6px;
+    margin-left:10px;
+    float: left;
+    p{
+      font-size:16px;
+      &:nth-child(2){
+        font-size:14px;
+      }
+    }
+  }
+  audio{
+    position: relative;
+    top:10px;
+    left: 30px;
+    width:470px;
+  }
+  #lyric{
+    float: right;
+    width:702px;
+    height:100%;
+    background:pink;
+    p{
+      margin-top:10px;
+      font-size:24px;
+      text-align:center;
+    }
+  }
+}
+#ul{
+  width:600px;
+  float: left;
+  // overflow:hidden;
+  margin-left: 5px;
+  margin-top:50px;
+  margin-bottom:50px;
+  li{
+    float: left;
+    margin-left:2px;
+    width:32%;
+    img{
+      width:100%;
+      border-radius: 20px;
+    }
+    p{
+      padding-left:20px;
+    }
+  }
+}
+.right{
+  float: right;
+  position:fixed;
+  top: 0;
+  right: 0;
+  width:700px;
+  height:100%;
+  border-left:5px solid yellow;
+  // background:yellow;
+  video{
+    margin-top:10px;
+    height:420px;
+    width:90%;
+    display:none;
+  }
+  .search{
+    margin-right:100px;
+    margin-top:10px;
+    #btn{
+      float: right;
+      font-size:18px;
+      width:100px;
+      height:44px;
+    }
+    #search{
+      float: right;
+      font-size:18px;
+      height:40px;
+      width:450px;
+    }
+  }
+  #talk{
+    height:100px;
+    width:100%;
+    border:1px solid blue;
+    background:green;
+    position: absolute;;
+    bottom:52px;
+    right: 0;
+    #pic{
+      width:100px;
+      height:100%;
+      background:#aaa;
+      float: left;
+      font-size:16px;
+      #head{
+        height:80px;
+        width:100%;
+      }
+      #talkName{
+        height:20px;
+        width:100%;
+        text-align:center;
+      }
+    }
+    #word{
+      width:600px;
+      height:100%;
+      float: right;
+      background:white;
+    }
+  }
+}

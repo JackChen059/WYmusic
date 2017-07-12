@@ -1,0 +1,55 @@
+/*
+* @Author: Marte
+* @Date:   2017-06-06 15:18:22
+* @Last Modified by:   Marte
+* @Last Modified time: 2017-06-13 15:50:37
+*/
+*{
+  margin:0;
+  padding: 0;
+}
+body{
+  height:100%;
+  width:100%;
+  font-size:12px;
+  // background:url(../image/background.png);
+}
+
+$main-color:  #5b0906;
+
+.clearfix{
+  zoom:1;
+}
+.clearfix:before, .clearfix:after{
+  display:table;
+  content:'';
+}
+.clearfix:after{
+  clear:both;
+}
+.push-L{
+  float:left;
+}
+.push-R{
+  float:right;
+}
+
+li{
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+  // color:#fff;
+}
+
+h1,h2{
+text-align:center;
+}
+
+.triangle{
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-left: 4px solid $main-color;
+  border-bottom: 4px solid transparent;
+}
