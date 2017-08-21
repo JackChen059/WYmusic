@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-07-06 11:34:18
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-07-14 14:06:04
+* @Last Modified time: 2017-07-11 14:23:49
 */
 
 'use strict';
@@ -69,7 +69,6 @@ window.onload=function(){
 //播放音乐
 
   oul.onclick=function(e){
-        talk.innerText = '';
     var eve = e||event;
     var target = eve.srcElement || eve.target;
     if(target.nodeName.toLowerCase() == 'img'){
